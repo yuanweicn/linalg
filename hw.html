@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <title>线性代数作业</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- 引用 CSS -->
+  <link rel="stylesheet" href="css/index_style.css">
+
+  <!-- MathJax -->
+  <script src="config/mathjax-core.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" defer></script>
+
+
+<style>
+  /* 美化下拉列表 */
+  #week-select {
+    font-size: 1.1rem; 
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    border: 1px solid #3b82f6;
+    background-color: rgba(59, 130, 246, 0.1);
+    color: #1e3a8a;
+    min-width: 180px;
+    cursor: pointer;
+    outline: none;
+    transition: all 0.2s ease;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-image: url('data:image/svg+xml;utf8,<svg fill="%231e3a8a" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/></svg>');
+    background-repeat: no-repeat;
+    background-position: right 0.8rem center;
+    background-size: 1rem;
+    padding-right: 2rem; 
+  }
+
+  #week-select:hover,
+  #week-select:focus {
+    background-color: rgba(59, 130, 246, 0.2);
+    border-color: #1e3a8a;
+  }
+
+  /* 标签样式 */
+  label[for="week-select"] {
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-right: 0.8rem;
+    color: #1e3a8a;
+  }
+</style>
+
+</head>
+<body>
+  <!-- 半透明 header -->
+  <header>
+    <h1>线性代数作业</h1>
+    <p>每周作业题目列表</p>
+  </header>
+
+  <main>
+    <section>
+      <h2>作业选择</h2>
+
+      <!-- 周次下拉菜单 -->
+      <div class="se-content">
+        <label for="week-select">选择周次:</label>
+        <select id="week-select">
+          <!-- JS 动态填充 -->
+        </select>
+      </div>
+
+      <div class="divider"></div>
+
+      <!-- 显示题目列表 -->
+      <div class="se-content">
+        <h3>题目列表</h3>
+        <ul id="hw-list"></ul>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    © <span id="year"></span> Linear Algebra Course
+  </footer>
+
+  <script>
+    // 自动年份
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    // -------------------------------
+    // 每周作业题目数据(add homework here)
+    // -------------------------------
+    const homework = [
+      { week: 1, questions: ["题目 1.1", "题目 1.2", "题目 1.3"] },
+    ];
+
+    const weekSelect = document.getElementById("week-select");
+    const hwList = document.getElementById("hw-list");
+
+    // 填充下拉菜单
+    homework.forEach(hw => {
+      const option = document.createElement("option");
+      option.value = hw.week;
+      option.textContent = `第 ${hw.week} 周`;
+      weekSelect.appendChild(option);
+    });
+
+    // 显示指定周的题目
+    function displayWeek(weekNumber) {
+      hwList.innerHTML = ""; // 清空
+      const hw = homework.find(h => h.week == weekNumber);
+      if (hw) {
+        hw.questions.forEach(q => {
+          const li = document.createElement("li");
+          li.textContent = q;
+          hwList.appendChild(li);
+        });
+      }
+    }
+
+    weekSelect.selectedIndex = homework.length - 1; // 选择最后一项
+    displayWeek(homework[homework.length - 1].week);
+
+    // 下拉菜单变化时更新题目列表
+    weekSelect.addEventListener("change", e => {
+      displayWeek(e.target.value);
+    });
+  </script>
+</body>
+</html>
