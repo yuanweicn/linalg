@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Linear Algebra</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- MathJax for LaTeX rendering -->
+  <script>
+    window.MathJax = {
+      tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+      line-height: 1.7;
+      margin: 0;
+      background: #f7f9fc;
+      color: #222;
+    }
+
+    header {
+      background: #1e3a8a;
+      color: white;
+      padding: 2rem 1rem;
+      text-align: center;
+    }
+
+    main {
+      max-width: 900px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+    }
+
+    section {
+      background: white;
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+
+    h2 {
+      color: #1e3a8a;
+      margin-top: 0;
+    }
+
+    ul {
+      padding-left: 1.2rem;
+    }
+
+    footer {
+      text-align: center;
+      padding: 1rem;
+      font-size: 0.9rem;
+      color: #666;
+    }
+
+    code {
+      background: #f1f5f9;
+      padding: 0.2rem 0.4rem;
+      border-radius: 4px;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>Linear Algebra</h1>
+    <p>Vectors, Matrices, and Linear Transformations</p>
+  </header>
+
+  <main>
+    <section>
+      <h2>Course Overview</h2>
+      <p>
+        This course introduces the fundamental concepts of linear algebra,
+        including vector spaces, matrices, determinants, eigenvalues,
+        and linear transformations.
+      </p>
+    </section>
+
+    <section>
+      <h2>Topics</h2>
+      <ul>
+        <li>Systems of Linear Equations</li>
+        <li>Matrix Operations</li>
+        <li>Vector Spaces and Subspaces</li>
+        <li>Eigenvalues and Eigenvectors</li>
+        <li>Orthogonality and Least Squares</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Key Formulas</h2>
+      <p><strong>Matrix multiplication:</strong></p>
+      <p>
+        $$
+        (AB)_{ij} = \sum_{k=1}^{n} A_{ik} B_{kj}
+        $$
+      </p>
+
+      <p><strong>Determinant of a 2×2 matrix:</strong></p>
+      <p>
+        $$
+        \det \begin{pmatrix}
+        a & b \\
+        c & d
+        \end{pmatrix}
+        = ad - bc
+        $$
+      </p>
+
+      <p><strong>Eigenvalue equation:</strong></p>
+      <p>
+        $$
+        A\mathbf{v} = \lambda \mathbf{v}
+        $$
+      </p>
+    </section>
+
+    <section>
+      <h2>Resources</h2>
+      <ul>
+        <li>Textbook: <em>Linear Algebra and Its Applications</em></li>
+        <li>Lecture Notes (PDF)</li>
+        <li>Problem Sets</li>
+      </ul>
+    </section>
+  </main>
+
+  <footer>
+    © 2026 Linear Algebra Course
+  </footer>
+</body>
+</html>
