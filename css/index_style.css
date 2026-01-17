@@ -1,0 +1,31 @@
+.semester {
+  margin-bottom: 1.5rem;
+}
+
+.semester h2 {
+  color: #1e3a8a;
+  margin-bottom: 0.8rem;
+  text-align: center;
+}
+
+
+/* 上下栏内容样式 */
+.se-content, .se-materials {
+  padding: 1rem 1.5rem;
+}
+
+/* 半透明分割线 */
+.divider {
+  height: 2px;
+  background: rgba(0, 0, 0, 0.1); /* 半透明灰色 */
+  margin: 0 1.5rem;
+}
+
+/* hover 整个卡片时，阴影稍增强 */
+.se-semester .se-blocks:hover {
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
+}
+
+/* 响应式：手机端缩小 padding */
+@media (max-width: 600px) {
+  .se-content, .se-materials {
