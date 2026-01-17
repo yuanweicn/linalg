@@ -2,7 +2,6 @@ window.MathJax = {
   tex: {
     inlineMath: [['$', '$'], ['\\(', '\\)']],
     displayMath: [['$$', '$$'], ['\\[', '\\]']],
-
     processEscapes: true,
     processEnvironments: true,
     tags: 'ams',
@@ -72,7 +71,19 @@ window.MathJax = {
       CW: "\\mathscr{W}",
       CX: "\\mathscr{X}",
       CY: "\\mathscr{Y}",
-      CZ: "\\mathscr{Z}"
+      CZ: "\\mathscr{Z}",
+
+      // Math operators
+      Ker: "\\operatorname{Ker}",
+      ran: "\\operatorname{Ran}",
+      Coker: "\\operatorname{Coker}",
+      Img: "\\operatorname{Im}",
+      Id: "\\operatorname{Id}",
+      Span: "\\operatorname{Span}",
+      sign: "\\operatorname{sign}",
+      lcm: "\\operatorname{lcm}",
+      per: "\\operatorname{per}",
+      conv: "\\operatorname{conv}"
     }
   },
 

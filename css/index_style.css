@@ -1,31 +1,90 @@
-.semester {
-  margin-bottom: 1.5rem;
+/* index_style.css */
+
+/* 全局样式 */
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+  line-height: 1.7;
+  margin: 0;
+  background: #f7f9fc;
+  color: #222;
 }
 
-.semester h2 {
-  color: #1e3a8a;
-  margin-bottom: 0.8rem;
+
+header {
+  background-color: rgba(30, 58, 138, 0.95); /* 深蓝色，透明 85% */
+  color: white;
+  padding: 2rem 1rem;
   text-align: center;
 }
 
 
-/* 上下栏内容样式 */
-.se-content, .se-materials {
+main {
+  max-width: 900px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+
+/* Section 样式（卡片） */
+section {
+  background: white;
+  margin-bottom: 1.5rem;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  transition: box-shadow 0.3s;
+}
+
+section:hover {
+  box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+}
+
+section h2 {
+  color: #1e3a8a;
+  margin: 0.8rem 0;
+  text-align: center;
+  padding-top: 1rem;
+}
+
+section .se-content,
+section .se-materials {
   padding: 1rem 1.5rem;
 }
 
-/* 半透明分割线 */
 .divider {
   height: 2px;
-  background: rgba(0, 0, 0, 0.1); /* 半透明灰色 */
+  background: rgba(0,0,0,0.1);
   margin: 0 1.5rem;
 }
 
-/* hover 整个卡片时，阴影稍增强 */
-.se-semester .se-blocks:hover {
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
+h3 {
+  margin-top: 0;
+  color: #1e3a8a;
 }
 
-/* 响应式：手机端缩小 padding */
+ul {
+  padding-left: 1.2rem;
+}
+
+footer {
+  text-align: center;
+  padding: 1rem;
+  font-size: 0.9rem;
+  color: #666;
+}
+
+code {
+  background: #f1f5f9;
+  padding: 0.2rem 0.4rem;
+  border-radius: 4px;
+}
+
+/* 响应式 */
 @media (max-width: 600px) {
-  .se-content, .se-materials {
+  section .se-content,
+  section .se-materials {
+    padding: 0.8rem 1rem;
+  }
+  .divider {
+    margin: 0 1rem;
+  }
+}

@@ -1,149 +1,124 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8">
   <title>线性代数</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<link rel="stylesheet" href="css/index_style.css">
+  <!-- 引用 CSS -->
+  <link rel="stylesheet" href="css/index_style.css">
 
-  <!-- MathJax for LaTeX rendering -->
-<script src="config/mathjax-core.js"></script>
-<script
-  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"
-  defer>
-</script>
-
-  <style>
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
-      line-height: 1.7;
-      margin: 0;
-      background: #f7f9fc;
-      color: #222;
-    }
-
-    header {
-      background: #1e3a8a;
-      color: white;
-      padding: 2rem 1rem;
-      text-align: center;
-    }
-
-    main {
-      max-width: 900px;
-      margin: 2rem auto;
-      padding: 0 1rem;
-    }
-
-    section {
-      background: white;
-      padding: 1.5rem;
-      margin-bottom: 1.5rem;
-      border-radius: 8px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-    }
-
-    h2 {
-      color: #1e3a8a;
-      margin-top: 0;
-    }
-
-    ul {
-      padding-left: 1.2rem;
-    }
-
-    footer {
-      text-align: center;
-      padding: 1rem;
-      font-size: 0.9rem;
-      color: #666;
-    }
-
-    code {
-      background: #f1f5f9;
-      padding: 0.2rem 0.4rem;
-      border-radius: 4px;
-    }
-  </style>
+  <!-- MathJax -->
+  <script src="config/mathjax-core.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" defer></script>
 </head>
-
 <body>
+  <!-- 半透明 header -->
   <header>
     <h1>线性代数</h1>
     <p>理论及应用</p>
   </header>
 
   <main>
-    <section>
-      <h2>Course Overview</h2>
-      <p>
-       本课程 
-      </p>
+    <!-- 动态学期显示 -->
+    <section class="semester" id="current-semester">
+      <h2 id="semester-title">学期</h2>
+
+      <div class="se-content">
+        <h3>课程内容</h3>
+        <ul id="semester-content"></ul>
+      </div>
+
+      <div class="divider"></div>
+
+      <div class="se-materials">
+        <h3>课程资料</h3>
+        <ul id="semester-materials"></ul>
+      </div>
     </section>
-
-<section class="semester">
-  <h2>秋季学期</h2>
-
-    <div class="se-content">
-      <h3>课程内容</h3>
-      <ul>
-        <li>矩阵的基本运算</li>
-        <li>线性空间</li>
-        <li>线性映射</li>
-        <li>多重线性映射</li>
-      </ul>
-    </div>
-
-    <!-- 分割线 -->
-    <div class="divider"></div>
-
-    <!-- 下栏：教材资料 -->
-    <div class="se-materials">
-      <h3>教材与资料</h3>
-      <ul>
-        <li>教材: <em>Linear Algebra and Its Applications</em></li>
-        <li>讲义 (PDF)</li>
-        <li>作业</li>
-      </ul>
-    </div>
-</section>
-
-<section class="semester">
-  <h2>春季学期</h2>
-
-    <div class="se-content">
-      <h3>课程内容</h3>
-      <ul>
-        <li>矩阵的基本运算</li>
-        <li>线性空间</li>
-        <li>线性映射</li>
-        <li>多重线性映射</li>
-      </ul>
-    </div>
-
-    <!-- 分割线 -->
-    <div class="divider"></div>
-
-    <!-- 下栏：教材资料 -->
-    <div class="se-materials">
-      <h3>教材与资料</h3>
-      <ul>
-        <li>教材: <em>Linear Algebra and Its Applications</em></li>
-        <li>讲义 (PDF)</li>
-        <li>作业</li>
-      </ul>
-    </div>
-</section>
-
   </main>
 
   <footer>
-  © <span id="year"></span> Linear Algebra Course
+    © <span id="year"></span> Linear Algebra Course
   </footer>
-<script>
-  document.getElementById("year").textContent = new Date().getFullYear();
-</script>
 
+  <!-- JavaScript -->
+  <script>
+    // 自动年份
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    // -------------------------------
+    // 控制学期
+    // -------------------------------
+    const isFallSemester = true; // true = 秋季, false = 春季
+
+    // -------------------------------
+    // 学期数据，包括课程和教材（支持超链接）
+    // -------------------------------
+    const semesters = {
+      fall: {
+        name: "秋季学期",
+        courses: [
+          "矩阵的基本运算",
+          "线性空间",
+          "线性映射",
+          "多重线性映射"
+        ],
+        materials: [
+          { text: "讲义(PDF)", href: "aut/linear_algebra_I.pdf" },
+          "作业"
+        ]
+      },
+      spring: {
+        name: "春季学期",
+        courses: [
+          "矩阵的基本运算",
+          "线性空间",
+          "线性映射",
+          "多重线性映射"
+        ],
+        materials: [
+          { text: "讲义(PDF)", href: "spr/linear_algebra_II.pdf" },
+          "作业"
+        ]
+      }
+    };
+
+    const currentSemester = isFallSemester ? semesters.fall : semesters.spring;
+
+    // -------------------------------
+    // 更新学期标题
+    // -------------------------------
+    const title = document.getElementById("semester-title");
+    title.textContent = currentSemester.name;
+
+    // -------------------------------
+    // 更新课程列表
+    // -------------------------------
+    const content = document.getElementById("semester-content");
+    currentSemester.courses.forEach(item => {
+      const li = document.createElement("li");
+      li.textContent = item;
+      content.appendChild(li);
+    });
+
+    // -------------------------------
+    // 更新教材列表，支持超链接
+    // -------------------------------
+    const materials = document.getElementById("semester-materials");
+    currentSemester.materials.forEach(item => {
+      const li = document.createElement("li");
+      if (typeof item === "string") {
+        li.textContent = item;
+      } else if (typeof item === "object" && item.href) {
+        const a = document.createElement("a");
+        a.href = item.href;
+        a.target = "_blank";
+        a.textContent = item.text;
+        li.appendChild(a);
+      }
+      materials.appendChild(li);
+    });
+  </script>
 </body>
 </html>
