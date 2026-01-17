@@ -6,12 +6,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <!-- MathJax for LaTeX rendering -->
-  <script>
-    window.MathJax = {
-      tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] }
-    };
-  </script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+<script src="config/mathjax-core.js"></script>
+<script
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"
+  defer>
+</script>
 
   <style>
     body {
@@ -99,7 +98,7 @@
       <p><strong>Matrix multiplication:</strong></p>
       <p>
         $$
-        (AB)_{ij} = \sum_{k=1}^{n} A_{ik} B_{kj}
+        (\CA B)_{ij} = \sum_{k=1}^{n} A_{ik} B_{kj}
         $$
       </p>
 
@@ -123,17 +122,21 @@
     </section>
 
     <section>
-      <h2>Resources</h2>
+      <h2>课程资料</h2>
       <ul>
-        <li>Textbook: <em>Linear Algebra and Its Applications</em></li>
-        <li>Lecture Notes (PDF)</li>
-        <li>Problem Sets</li>
+        <li>教材: <em>Linear Algebra and Its Applications</em></li>
+        <li>讲义 (PDF)</li>
+        <!-- <li>Problem Sets</li> -->
       </ul>
     </section>
   </main>
 
   <footer>
-    © 2026 Linear Algebra Course
+  © <span id="year"></span> Linear Algebra Course
   </footer>
+<script>
+  document.getElementById("year").textContent = new Date().getFullYear();
+</script>
+
 </body>
 </html>
