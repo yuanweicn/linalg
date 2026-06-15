@@ -1,1 +1,1 @@
-This is webpages for linear algebra course deployed on https://vercel.com
+This is webpages for linear algebra course deployed on Cloudflare Pages
