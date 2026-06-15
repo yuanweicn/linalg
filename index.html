@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>线性代数课程主页 | Linear Algebra</title>
+    <meta name="description" content="线性代数课程官方主页。提供讲义下载、本周作业发布及课程参考资料。">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@300;400;500;700&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet">
+    
+    <!-- Marked for Markdown rendering -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <!-- Main Style Sheet -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="decorations">
+        <div class="glow glow-1"></div>
+        <div class="glow glow-2"></div>
+    </div>
+
+    <!-- Header Navigation -->
+    <header class="navbar">
+        <div class="nav-container">
+            <div class="brand">
+                <div class="logo-icon">
+                    <svg viewBox="0 0 24 24" width="26" height="26" stroke="currentColor" stroke-width="1.5" fill="none">
+                        <line x1="4" y1="20" x2="20" y2="4"></line>
+                        <line x1="4" y1="4" x2="20" y2="20"></line>
+                        <circle cx="12" cy="12" r="3" fill="currentColor"></circle>
+                    </svg>
+                </div>
+                <div class="brand-text">
+                    <h1>线性代数</h1>
+                    <span>Linear Algebra</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="main-container">
+        <!-- Banner / Hero Section -->
+        <section class="hero-section">
+            <canvas id="vector-canvas"></canvas>
+            <div class="hero-content">
+                <div class="hero-info">
+                    <h2>线性代数</h2>
+                    
+                    <div class="course-meta">
+                        <div class="meta-item">
+                            <i data-lucide="map-pin"></i>
+                            <div>
+                                <label>上课时间与地点</label>
+                                <span id="schedule-class">加载中...</span>
+                            </div>
+                        </div>
+                        <div class="meta-item">
+                            <i data-lucide="calendar"></i>
+                            <div>
+                                <label>习题课时间与地点</label>
+                                <span id="schedule-exercise">加载中...</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Course Content Tabs & Panels -->
+        <section class="content-section">
+            <!-- Navigation Tabs -->
+            <div class="tab-container">
+                <div class="tab-list" role="tablist">
+                    <button class="tab-btn active" data-tab="lectures" role="tab" aria-selected="true">
+                        <i data-lucide="book-open"></i>
+                        <span>讲义下载</span>
+                    </button>
+                    <button class="tab-btn" data-tab="homeworks" role="tab" aria-selected="false">
+                        <i data-lucide="clipboard-list"></i>
+                        <span>本周作业</span>
+                    </button>
+                    <button class="tab-btn" data-tab="resources" role="tab" aria-selected="false">
+                        <i data-lucide="folder-open"></i>
+                        <span>课程资源</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Tab Panels -->
+            <div class="panel-container">
+                <!-- Lectures Download Panel (Statically linked files, fully clickable cards) -->
+                <div id="panel-lectures" class="tab-panel active" role="tabpanel">
+                    <div class="panel-header">
+                        <h3>课程讲义下载</h3>
+                    </div>
+                    <div class="lecture-grid">
+                        <!-- Autumn Lecture Card -->
+                        <a href="aut/linear_algebra_I.pdf" class="lecture-card download-card" download title="点击下载秋季学期讲义">
+                            <div class="lecture-card-icon">
+                                <i data-lucide="file-text"></i>
+                            </div>
+                            <div class="lecture-card-info">
+                                <h4>线性代数 I 讲义 (秋季学期)</h4>
+                                <div class="lecture-card-meta">
+                                    <span>点击直接下载 PDF 讲义</span>
+                                </div>
+                            </div>
+                            <div class="lecture-card-actions">
+                                <i data-lucide="download"></i>
+                            </div>
+                        </a>
+
+                        <!-- Spring Lecture Card -->
+                        <a href="spr/linear_algebra_II.pdf" class="lecture-card download-card" download title="点击下载春季学期讲义">
+                            <div class="lecture-card-icon">
+                                <i data-lucide="file-text"></i>
+                            </div>
+                            <div class="lecture-card-info">
+                                <h4>线性代数 II 讲义 (春季学期)</h4>
+                                <div class="lecture-card-meta">
+                                    <span>点击直接下载 PDF 讲义</span>
+                                </div>
+                            </div>
+                            <div class="lecture-card-actions">
+                                <i data-lucide="download"></i>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Homeworks Panel (Single active homework, no history list) -->
+                <div id="panel-homeworks" class="tab-panel" role="tabpanel">
+                    <div class="hw-container-single">
+                        <article id="hw-viewer" class="hw-viewer">
+                            <div class="hw-viewer-header">
+                                <h2 id="active-hw-title">本周作业</h2>
+                                <div class="hw-actions">
+                                    <button id="print-hw-btn" class="btn btn-secondary">
+                                        <i data-lucide="printer"></i>
+                                        <span>打印作业</span>
+                                    </button>
+                                </div>
+                            </div>
+                            <div id="hw-markdown-content" class="markdown-body">
+                                <div class="loading">加载中...</div>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+
+                <!-- Resources Panel (Dynamic Markdown) -->
+                <div id="panel-resources" class="tab-panel" role="tabpanel">
+                    <div class="hw-container-single">
+                        <article class="hw-viewer">
+                            <div class="hw-viewer-header">
+                                <h2>课程资源</h2>
+                            </div>
+                            <div id="resources-markdown-content" class="markdown-body">
+                                <div class="loading">加载中...</div>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <p>&copy; 2026 线性代数课程教学团队. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- JS Scripts -->
+    <script src="app.js"></script>
+</body>
+</html>
