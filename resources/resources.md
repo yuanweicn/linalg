@@ -1,2 +1,1 @@
-- [课程大纲与教学日历 (TXT)](resources/课程大纲与教学日历.txt)
-- [课程主页镜像 (GitHub 外部链接)](https://github.com)
+
